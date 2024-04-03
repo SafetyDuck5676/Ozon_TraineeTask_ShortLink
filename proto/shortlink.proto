@@ -1,0 +1,29 @@
+// proto/shortlink.proto
+
+syntax = "proto3";
+
+package shortlink;
+
+option go_package = "./proto";
+
+
+service ShortLinkService {
+    rpc Shorten(ShortenRequest) returns (ShortenResponse) {}
+    rpc Expand(ExpandRequest) returns (ExpandResponse) {}
+}
+
+message ShortenRequest {
+    string url = 1;
+}
+
+message ShortenResponse {
+    string shortLink = 1;
+}
+
+message ExpandRequest {
+    string shortLink = 1;
+}
+
+message ExpandResponse {
+    string originalUrl = 1;
+}
